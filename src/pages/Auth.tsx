@@ -25,19 +25,21 @@ export default function Auth() {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
         toast.success("Login realizado com sucesso!");
-        navigate("/dashboard");
+        // Redirect to desktop instead of dashboard
+        navigate("/desktop");
       } else {
         const { error } = await supabase.auth.signUp({
           email,
           password,
           options: {
             data: { full_name: fullName },
-            emailRedirectTo: `${window.location.origin}/dashboard`
+            emailRedirectTo: `${window.location.origin}/desktop`
           }
         });
         if (error) throw error;
         toast.success("Conta criada! Você já pode fazer login.");
-        navigate("/dashboard");
+        // Redirect to desktop after signup
+        navigate("/desktop");
       }
     } catch (error: any) {
       toast.error(error.message);

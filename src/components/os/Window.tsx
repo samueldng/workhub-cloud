@@ -14,6 +14,7 @@ interface WindowProps {
   onMinimize: () => void;
   isActive: boolean;
   onFocus: () => void;
+  className?: string; // Add className prop for additional styling
 }
 
 export function Window({
@@ -26,6 +27,7 @@ export function Window({
   onMinimize,
   isActive,
   onFocus,
+  className = "", // Destructure className with default empty string
 }: WindowProps) {
   const [isMaximized, setIsMaximized] = useState(false);
   const [previousState, setPreviousState] = useState(defaultPosition);
@@ -50,7 +52,7 @@ export function Window({
       dragHandleClassName="window-header"
       className={`rounded-lg overflow-hidden shadow-2xl ${
         isActive ? "z-50" : "z-40"
-      }`}
+      } ${className}`} // Add className to the existing classes
       style={{
         position: isMaximized ? "fixed" : "absolute",
         inset: isMaximized ? 0 : undefined,
@@ -63,7 +65,7 @@ export function Window({
       enableResizing={!isMaximized}
       onMouseDown={onFocus}
     >
-      <div className="h-full flex flex-col bg-[hsl(var(--window-bg))] border border-[hsl(var(--window-border))]">
+      <div className="h-full flex flex-col bg-[hsl(var(--window-bg))] border border-[hsl(var(--window-border))] backdrop-blur-sm bg-opacity-90">
         <div className="window-header flex items-center justify-between px-4 py-2 bg-[hsl(var(--window-header))] border-b border-[hsl(var(--window-border))] cursor-move">
           <div className="flex items-center gap-2">
             {icon}

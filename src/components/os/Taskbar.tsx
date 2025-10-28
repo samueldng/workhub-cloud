@@ -12,7 +12,7 @@ interface TaskbarProps {
 
 export function Taskbar({ elapsedTime, onLogout, openApps, onAppClick, onNewApp }: TaskbarProps) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 h-12 bg-[hsl(var(--taskbar-bg))] border-t border-[hsl(var(--window-border))] flex items-center justify-between px-4 z-50">
+    <div className="fixed bottom-0 left-0 right-0 h-12 bg-[hsl(var(--taskbar-bg))] border-t border-[hsl(var(--window-border))] flex items-center justify-between px-4 z-50 backdrop-blur-sm bg-opacity-90">
       <div className="flex items-center gap-4">
         <Button
           variant="ghost"

@@ -1,4 +1,4 @@
-import { FileText, Globe, Terminal, Calculator, Calendar } from "lucide-react";
+import { FileText, Globe, Terminal, Calculator, Calendar, Clock, Chrome, Table, Code } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 interface App {
@@ -26,6 +26,36 @@ const availableApps: App[] = [
     name: "Terminal",
     icon: <Terminal className="h-8 w-8" />,
     description: "Terminal de comandos",
+  },
+  {
+    id: "time-tracker",
+    name: "Time Tracker",
+    icon: <Clock className="h-8 w-8" />,
+    description: "Controle de tempo e ganhos",
+  },
+  {
+    id: "chrome",
+    name: "Google Chrome",
+    icon: <Chrome className="h-8 w-8" />,
+    description: "Navegador web Chrome",
+  },
+  {
+    id: "word",
+    name: "Microsoft Word",
+    icon: <FileText className="h-8 w-8" />,
+    description: "Editor de documentos",
+  },
+  {
+    id: "excel",
+    name: "Microsoft Excel",
+    icon: <Table className="h-8 w-8" />,
+    description: "Planilhas eletrônicas",
+  },
+  {
+    id: "ide",
+    name: "IDE",
+    icon: <Code className="h-8 w-8" />,
+    description: "Ambiente de desenvolvimento",
   },
 ];
 

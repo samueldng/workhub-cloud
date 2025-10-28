@@ -67,7 +67,7 @@ export default function Dashboard() {
 
   const stopTracking = async () => {
     const duration = Math.floor((Date.now() - new Date(currentEntry.started_at).getTime()) / 1000);
-    const earnings = ((duration / 3600) * (profile?.hourly_rate || 0)).toFixed(2);
+    const earnings = ((duration / 3600) * (profile?.hourly_rate || 25)).toFixed(2);
 
     await supabase
       .from("time_entries")
@@ -125,7 +125,7 @@ export default function Dashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">Valor/Hora</p>
-                <p className="text-3xl font-bold mt-2">R$ {profile?.hourly_rate || 0}</p>
+                <p className="text-3xl font-bold mt-2">R$ {profile?.hourly_rate || 25}</p>
               </div>
               <DollarSign className="h-10 w-10 text-success" />
             </div>
@@ -136,7 +136,7 @@ export default function Dashboard() {
               <div>
                 <p className="text-sm text-muted-foreground">Ganho Atual</p>
                 <p className="text-3xl font-bold mt-2">
-                  R$ {((elapsed / 3600) * (profile?.hourly_rate || 0)).toFixed(2)}
+                  R$ {((elapsed / 3600) * (profile?.hourly_rate || 25)).toFixed(2)}
                 </p>
               </div>
               <DollarSign className="h-10 w-10 text-accent" />

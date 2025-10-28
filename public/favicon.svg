@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" fill="none">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" /> <!-- Purple -->
+      <stop offset="100%" stop-color="#3B82F6" /> <!-- Blue -->
+    </linearGradient>
+    <linearGradient id="clockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA" /> <!-- Light Purple -->
+      <stop offset="100%" stop-color="#93C5FD" /> <!-- Light Blue -->
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle with gradient -->
+  <circle cx="600" cy="600" r="580" fill="url(#bgGradient)" />
+  
+  <!-- Clock face -->
+  <circle cx="600" cy="600" r="400" fill="white" fill-opacity="0.95" />
+  
+  <!-- Hour marks -->
+  <g stroke="url(#clockGradient)" stroke-width="30" stroke-linecap="round">
+    <!-- 12 o'clock -->
+    <line x1="600" y1="250" x2="600" y2="320" />
+    <!-- 3 o'clock -->
+    <line x1="950" y1="600" x2="880" y2="600" />
+    <!-- 6 o'clock -->
+    <line x1="600" y1="950" x2="600" y2="880" />
+    <!-- 9 o'clock -->
+    <line x1="250" y1="600" x2="320" y2="600" />
+  </g>
+  
+  <!-- Clock hands -->
+  <g fill="url(#clockGradient)">
+    <!-- Hour hand -->
+    <polygon points="600,600 585,450 615,450" />
+    <!-- Minute hand -->
+    <polygon points="600,600 585,300 615,300" />
+  </g>
+  
+  <!-- Center dot -->
+  <circle cx="600" cy="600" r="35" fill="url(#clockGradient)" />
+</svg>

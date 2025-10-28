@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="clockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA" />
+      <stop offset="100%" stop-color="#93C5FD" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="90" cy="90" r="85" fill="url(#bgGradient)" />
+  
+  <!-- Clock face -->
+  <circle cx="90" cy="90" r="65" fill="white" fill-opacity="0.9" />
+  
+  <!-- Hour marks -->
+  <g stroke="url(#clockGradient)" stroke-width="4" stroke-linecap="round">
+    <line x1="90" y1="30" x2="90" y2="40" />
+    <line x1="150" y1="90" x2="140" y2="90" />
+    <line x1="90" y1="150" x2="90" y2="140" />
+    <line x1="30" y1="90" x2="40" y2="90" />
+  </g>
+  
+  <!-- Clock hands -->
+  <g fill="url(#clockGradient)">
+    <polygon points="90,90 85,65 95,65" />
+    <polygon points="90,90 85,40 95,40" />
+  </g>
+  
+  <!-- Center dot -->
+  <circle cx="90" cy="90" r="5" fill="url(#clockGradient)" />
+</svg>
