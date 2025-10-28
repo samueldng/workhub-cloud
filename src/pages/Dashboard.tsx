@@ -3,8 +3,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Clock, Play, Pause, LogOut, DollarSign } from "lucide-react";
+import { Clock, Play, Pause, LogOut, DollarSign, MonitorPlay } from "lucide-react";
 import { toast } from "sonner";
+import { formatTime } from "@/lib/utils";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -83,12 +84,6 @@ export default function Dashboard() {
     toast.success(`Timer parado! Ganho: R$ ${earnings}`);
   };
 
-  const formatTime = (seconds: number) => {
-    const h = Math.floor(seconds / 3600);
-    const m = Math.floor((seconds % 3600) / 60);
-    const s = Math.floor(seconds % 60);
-    return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
-  };
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -103,10 +98,16 @@ export default function Dashboard() {
             <Clock className="h-8 w-8 text-primary mr-3" />
             <h1 className="text-3xl font-bold">Workhour Cloud</h1>
           </div>
-          <Button variant="outline" onClick={handleLogout}>
-            <LogOut className="mr-2 h-4 w-4" />
-            Sair
-          </Button>
+          <div className="flex gap-2">
+            <Button onClick={() => navigate("/desktop")}>
+              <MonitorPlay className="mr-2 h-4 w-4" />
+              Área de Trabalho
+            </Button>
+            <Button variant="outline" onClick={handleLogout}>
+              <LogOut className="mr-2 h-4 w-4" />
+              Sair
+            </Button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
