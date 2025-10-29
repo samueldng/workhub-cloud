@@ -92,34 +92,36 @@ export function TimeTrackerWidget({ profile, onTrackingChange }: TimeTrackerWidg
   };
 
   return (
-    <Card className="p-4 bg-card border-border w-80 backdrop-blur-sm bg-opacity-90">
+    <div className="p-4 w-72">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-semibold flex items-center">
-          <Clock className="h-4 w-4 mr-2" />
-          Time Tracker
+        <h3 className="font-semibold flex items-center text-gray-800">
+          <Clock className="h-4 w-4 mr-2 text-blue-500" />
+          <span className="text-base">Time Tracker</span>
         </h3>
       </div>
 
       <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-xs text-muted-foreground">Tempo</p>
-            <p className="text-lg font-mono">{formatTime(elapsed)}</p>
+        <div className="grid grid-cols-2 gap-3">
+          <div className="bg-white/80 backdrop-blur-sm rounded-lg p-3 border border-gray-300 shadow-sm">
+            <p className="text-xs text-gray-500 mb-1">Tempo</p>
+            <p className="text-lg font-mono text-blue-500">{formatTime(elapsed)}</p>
           </div>
-          <div>
-            <p className="text-xs text-muted-foreground">Valor/Hora</p>
-            <p className="text-lg">R$ {profile?.hourly_rate || 25}</p>
+          <div className="bg-white/80 backdrop-blur-sm rounded-lg p-3 border border-gray-300 shadow-sm">
+            <p className="text-xs text-gray-500 mb-1">Valor/Hora</p>
+            <p className="text-lg text-indigo-500">R$ {profile?.hourly_rate || 25}</p>
           </div>
-          <div className="col-span-2">
-            <p className="text-xs text-muted-foreground">Ganho</p>
-            <p className="text-lg">R$ {((elapsed / 3600) * (profile?.hourly_rate || 25)).toFixed(2)}</p>
+          <div className="col-span-2 bg-white/80 backdrop-blur-sm rounded-lg p-3 border border-gray-300 shadow-sm">
+            <p className="text-xs text-gray-500 mb-1">Ganho</p>
+            <p className="text-xl font-bold text-green-600">R$ {((elapsed / 3600) * (profile?.hourly_rate || 25)).toFixed(2)}</p>
           </div>
         </div>
 
         <Button
           size="sm"
           onClick={isTracking ? stopTracking : startTracking}
-          className="w-full"
+          className={`w-full py-2 rounded-md font-medium transition-all duration-200 ${isTracking 
+            ? 'bg-red-500 hover:bg-red-600 text-white' 
+            : 'bg-blue-500 hover:bg-blue-600 text-white'}`}
         >
           {isTracking ? (
             <>
@@ -134,6 +136,6 @@ export function TimeTrackerWidget({ profile, onTrackingChange }: TimeTrackerWidg
           )}
         </Button>
       </div>
-    </Card>
+    </div>
   );
 }

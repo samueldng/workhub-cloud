@@ -9,6 +9,13 @@ import Dashboard from "./pages/Dashboard";
 import Desktop from "./pages/Desktop";
 import NotFound from "./pages/NotFound";
 
+// Simple redirect to Windows 11 React app
+const Win11Redirect = () => {
+  // Redirect to the Windows 11 React app running on a different port
+  window.location.href = 'http://localhost:5175';
+  return null;
+};
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -21,7 +28,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/desktop" element={<Desktop />} />
+          <Route path="/desktop" element={<Win11Redirect />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

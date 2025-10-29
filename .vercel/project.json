@@ -1,0 +1,16 @@
+{
+  "projectId": "prj_Am0wPdNlSYD2XdzvpqOiudmxShHa",
+  "orgId": "team_eyQUujmn5IRNFQndbnuOx3AB",
+  "projectName": "workhub-cloud",
+  "settings": {
+    "createdAt": 1761682242245,
+    "framework": "vite",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "22.x"
+  }
+}

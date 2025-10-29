@@ -15,4 +15,10 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Serve static files from win11React directory
+  build: {
+    rollupOptions: {
+      external: [],
+    },
+  },
 }));

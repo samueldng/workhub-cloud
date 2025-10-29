@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="clockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA" />
+      <stop offset="100%" stop-color="#93C5FD" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="8" cy="8" r="7" fill="url(#bgGradient)" />
+  
+  <!-- Clock face -->
+  <circle cx="8" cy="8" r="5" fill="white" fill-opacity="0.9" />
+  
+  <!-- Hour marks -->
+  <g stroke="url(#clockGradient)" stroke-width="1" stroke-linecap="round">
+    <line x1="8" y1="3" x2="8" y2="4" />
+    <line x1="13" y1="8" x2="12" y2="8" />
+    <line x1="8" y1="13" x2="8" y2="12" />
+    <line x1="3" y1="8" x2="4" y2="8" />
+  </g>
+  
+  <!-- Clock hands -->
+  <g fill="url(#clockGradient)">
+    <polygon points="8,8 7.5,6 8.5,6" />
+    <polygon points="8,8 7.5,4 8.5,4" />
+  </g>
+  
+  <!-- Center dot -->
+  <circle cx="8" cy="8" r="0.5" fill="url(#clockGradient)" />
+</svg>

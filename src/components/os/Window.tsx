@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 import { Rnd } from "react-rnd";
-import { X, Minus, Maximize2, Minimize2 } from "lucide-react";
+import { X, Minus, Maximize2, Minimize2, Minimize, Maximize } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface WindowProps {
@@ -50,9 +50,7 @@ export function Window({
       minHeight={300}
       bounds="parent"
       dragHandleClassName="window-header"
-      className={`rounded-lg overflow-hidden shadow-2xl ${
-        isActive ? "z-50" : "z-40"
-      } ${className}`} // Add className to the existing classes
+      className={`rounded-md overflow-hidden shadow-xl ${isActive ? "z-50" : "z-40"} ${className}`}
       style={{
         position: isMaximized ? "fixed" : "absolute",
         inset: isMaximized ? 0 : undefined,
@@ -65,44 +63,47 @@ export function Window({
       enableResizing={!isMaximized}
       onMouseDown={onFocus}
     >
-      <div className="h-full flex flex-col bg-[hsl(var(--window-bg))] border border-[hsl(var(--window-border))] backdrop-blur-sm bg-opacity-90">
-        <div className="window-header flex items-center justify-between px-4 py-2 bg-[hsl(var(--window-header))] border-b border-[hsl(var(--window-border))] cursor-move">
+      <div className="h-full flex flex-col bg-white rounded-md overflow-hidden relative border border-gray-300">
+        {/* Windows 11 Style Window Header */}
+        <div className="window-header flex items-center justify-between px-2 py-1.5 bg-gray-100 border-b border-gray-300 cursor-move relative">
           <div className="flex items-center gap-2">
-            {icon}
-            <span className="text-sm font-medium text-foreground">{title}</span>
+            <div className="flex gap-2">
+              <button 
+                className="w-6 h-6 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors flex items-center justify-center"
+                onClick={onClose}
+              >
+                <X className="h-3 w-3 text-gray-600" />
+              </button>
+              <button 
+                className="w-6 h-6 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors flex items-center justify-center"
+                onClick={onMinimize}
+              >
+                <Minus className="h-3 w-3 text-gray-600" />
+              </button>
+              <button 
+                className="w-6 h-6 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors flex items-center justify-center"
+                onClick={handleMaximize}
+              >
+                <Maximize2 className="h-3 w-3 text-gray-600" />
+              </button>
+            </div>
+            <div className="flex items-center gap-2">
+              {icon}
+              <span className="text-sm font-medium text-gray-800">{title}</span>
+            </div>
           </div>
-          <div className="flex items-center gap-1">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-7 w-7 hover:bg-muted"
-              onClick={onMinimize}
-            >
-              <Minus className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-7 w-7 hover:bg-muted"
-              onClick={handleMaximize}
-            >
-              {isMaximized ? (
-                <Minimize2 className="h-4 w-4" />
-              ) : (
-                <Maximize2 className="h-4 w-4" />
-              )}
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-7 w-7 hover:bg-destructive hover:text-destructive-foreground"
-              onClick={onClose}
-            >
-              <X className="h-4 w-4" />
-            </Button>
+          
+          {/* Windows 11 Style Window Controls */}
+          <div className="flex gap-1">
+            <button className="w-6 h-6 rounded hover:bg-gray-200 flex items-center justify-center">
+              <Minimize className="h-3 w-3 text-gray-600" />
+            </button>
+            <button className="w-6 h-6 rounded hover:bg-gray-200 flex items-center justify-center">
+              <Maximize className="h-3 w-3 text-gray-600" />
+            </button>
           </div>
         </div>
-        <div className="flex-1 overflow-auto">{children}</div>
+        <div className="flex-1 overflow-auto bg-white">{children}</div>
       </div>
     </Rnd>
   );

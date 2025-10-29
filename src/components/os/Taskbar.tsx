@@ -1,4 +1,4 @@
-import { Clock, LogOut, Plus, AppWindow } from "lucide-react";
+import { Clock, LogOut, Plus, AppWindow, Search, Wifi, Volume2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { formatTime } from "@/lib/utils";
 
@@ -12,48 +12,57 @@ interface TaskbarProps {
 
 export function Taskbar({ elapsedTime, onLogout, openApps, onAppClick, onNewApp }: TaskbarProps) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 h-12 bg-[hsl(var(--taskbar-bg))] border-t border-[hsl(var(--window-border))] flex items-center justify-between px-4 z-50 backdrop-blur-sm bg-opacity-90">
-      <div className="flex items-center gap-4">
-        <Button
-          variant="ghost"
-          size="sm"
-          className="text-[hsl(var(--taskbar-foreground))] hover:bg-[hsl(var(--taskbar-hover))]"
+    <div className="fixed bottom-0 left-0 right-0 h-12 bg-gray-900/80 backdrop-blur-md flex items-center justify-between px-4 z-50 border-t border-gray-700/50">
+      <div className="flex items-center gap-2">
+        {/* Windows 11 Style Start Button */}
+        <button
+          className="w-10 h-10 rounded-md bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center hover:from-blue-600 hover:to-purple-700 transition-all"
           onClick={onNewApp}
         >
-          <AppWindow className="h-4 w-4 mr-2" />
-          Apps
-        </Button>
+          <AppWindow className="h-5 w-5 text-white" />
+        </button>
         
-        <div className="flex items-center gap-2">
+        {/* Windows 11 Style Search Bar */}
+        <div className="hidden md:flex items-center h-10 px-4 bg-gray-700/30 rounded-md border border-gray-600/50 text-gray-300 text-sm ml-2">
+          <Search className="h-4 w-4 mr-2" />
+          <span>Type here to search</span>
+        </div>
+        
+        <div className="flex items-center gap-1 ml-2">
           {openApps.map((app) => (
-            <Button
+            <button
               key={app.id}
-              variant="ghost"
-              size="sm"
-              className="text-[hsl(var(--taskbar-foreground))] hover:bg-[hsl(var(--taskbar-hover))]"
+              className="w-10 h-10 rounded-md flex items-center justify-center hover:bg-gray-700/50 transition-colors"
               onClick={() => onAppClick(app.id)}
             >
-              {app.icon}
-              <span className="ml-2 max-w-32 truncate">{app.title}</span>
-            </Button>
+              <div className="text-white text-lg">{app.icon}</div>
+            </button>
           ))}
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-2 text-[hsl(var(--taskbar-foreground))]">
-          <Clock className="h-4 w-4" />
-          <span className="font-mono text-sm">{formatTime(elapsedTime)}</span>
+      <div className="flex items-center gap-2">
+        {/* Windows 11 Style System Tray */}
+        <div className="flex items-center gap-1">
+          <div className="w-6 h-6 rounded-sm bg-gray-700/50 flex items-center justify-center">
+            <Wifi className="h-4 w-4 text-gray-300" />
+          </div>
+          <div className="w-6 h-6 rounded-sm bg-gray-700/50 flex items-center justify-center">
+            <Volume2 className="h-4 w-4 text-gray-300" />
+          </div>
         </div>
         
-        <Button
-          variant="ghost"
-          size="sm"
-          className="text-[hsl(var(--taskbar-foreground))] hover:bg-[hsl(var(--taskbar-hover))]"
+        <div className="flex items-center gap-1 text-white text-sm">
+          <Clock className="h-4 w-4" />
+          <span>{formatTime(elapsedTime)}</span>
+        </div>
+        
+        <button
+          className="w-10 h-10 rounded-md hover:bg-gray-700/50 transition-colors flex items-center justify-center"
           onClick={onLogout}
         >
-          <LogOut className="h-4 w-4" />
-        </Button>
+          <LogOut className="h-5 w-5 text-white" />
+        </button>
       </div>
     </div>
   );

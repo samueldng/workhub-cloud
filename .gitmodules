@@ -1,0 +1,3 @@
+[submodule "win11React"]
+	path = win11React
+	url = https://github.com/blueedgetechno/win11React.git
